@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Ayah</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Tema Biru Navy dengan Gradasi */
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 90%;
+            width: 400px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Tampilan Login */
+        #login-section h2 {
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        input[type="password"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            background-color: #002244;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #004e92;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        #error-msg {
+            color: #ffb3b3;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Tampilan Ucapan (Disembunyikan di awal) */
+        #greeting-section {
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        #greeting-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .icon {
+            font-size: 50px;
+            margin: 15px 0;
+            animation: bounce 2s infinite;
+        }
+
+        #greeting-section p {
+            line-height: 1.6;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Bagian Login Sandi -->
+    <div class="container" id="login-section">
+        <h2>Masukkan Sandi</h2>
+        <input type="password" id="password-input" placeholder="Masukkan 4 digit sandi..." onkeypress="handleEnter(event)">
+        <button onclick="checkPassword()">Buka Ucapan</button>
+        <p id="error-msg">Sandi salah, silakan coba lagi.</p>
+    </div>
+
+    <!-- Bagian Ucapan -->
+    <div class="container" id="greeting-section">
+        <div class="icon">🎂🎉</div>
+        <h1>Selamat Ulang Tahun,<br>Ayah!</h1>
+        <p>
+            Terima kasih atas segala cinta, bimbingan, kerja keras, dan pengorbanan yang Ayah berikan untuk keluarga kita. 
+            Semoga Ayah selalu diberikan kesehatan, dilimpahkan kebahagiaan, dan panjang umur. <br><br>
+            <strong>Aku sayang Ayah! ❤️</strong>
+        </p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var input = document.getElementById('password-input').value;
+            var errorMsg = document.getElementById('error-msg');
+            var loginSection = document.getElementById('login-section');
+            var greetingSection = document.getElementById('greeting-section');
+
+            // Cek apakah sandi adalah 1809
+            if (input === '1809') {
+                loginSection.style.display = 'none';
+                greetingSection.style.display = 'block';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('password-input').value = ''; // Kosongkan input
+            }
+        }
+
+        // Fungsi agar bisa menekan tombol "Enter" di keyboard
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        }
+    </script>
+
+</body>
+</html>
